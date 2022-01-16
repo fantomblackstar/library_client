@@ -2,11 +2,12 @@ import logo from './logo.svg';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Home from './public/Home/Home';
 import Contacts from './public/Contacts/Contacts';
 import NewBooks from './public/NewBooks/NewBooks';
 import ErrorPage from './public/ErrorPage/Errorpage';
+import SignIn from './public/SignIn/SingIn';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/new" element={<NewBooks />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
