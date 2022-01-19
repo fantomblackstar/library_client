@@ -2,6 +2,8 @@ import React from "react";
 
 export default function SignIn (){
     return (
-        <h1>SignIN</h1>
+        <div className="page autorisation">
+            
+        </div>
     )
 }

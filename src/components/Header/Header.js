@@ -8,11 +8,11 @@ export default function Header(){
                     <ul className="header__list">
                         <li className="header__link"><a href="/">Головна</a></li>
                         <li className="header__link"><a href="/new">Новинки</a></li>
-                        <li className="header__link"><a href="/contacts">Контакти</a></li>
+                        <li className="header__link"><a href="/about">Про нас</a></li>
                         <li className="header__link"><a href="/signin">Sign In</a></li>
                     </ul>
                 </nav>
-                <div class="header__burger">
+                <div className="header__burger">
                         <span></span>
                 </div>
                

@@ -1,0 +1,25 @@
+.footer {
+    width: 100%;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.footer__body {
+    position: relative;
+    padding-top: 10px;
+}
+
+.footer__body::after {
+    width: 100%;
+    content: "";
+    height: 2px;
+    background-color: grey;
+    border-radius: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+
+.footer__text {
+    opacity: .8;
+}
