@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100%;
   text-align: center;
-  padding-top: 70px;
+  padding-top: 80px;
   position: relative;
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
@@ -46,8 +46,9 @@
 
 .container {
   max-width: 1170px;
-  padding: 0px 15px;
+  padding: 0px 30px;
   margin: 0px auto;
+  box-sizing: border-box;
 }
 
 a {
@@ -87,4 +88,35 @@ a {
 
 .section {
   margin-bottom: 30px;
+}
+
+.block-img {
+  position: relative;
+}
+
+.block-img__img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width:1200px){
+  .container {
+    width: 900px;
+  }
+}
+
+@media (max-width:992px){
+  .container {
+    width: 700px;
+  }
+}
+
+
+@media (max-width:767px){
+  html {
+    font-size: 16px;
+  }
+  .container {
+    width: 100%;
+  }
 }

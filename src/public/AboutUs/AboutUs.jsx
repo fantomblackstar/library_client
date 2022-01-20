@@ -48,19 +48,19 @@ export default function AboutUs() {
                 </section>
                 <section className="main-info section">
                     <div className="main-info__column">
-                        <p className="page__title">Адреса \ Локація</p>
-                        <p className="page__text"><img className="main-info__img" src={house_icon} /><b>Населений пункт: </b>Кавсько</p>
-                        <p className="page__text"><img className="main-info__img" src={map_icon} /><b>Область: </b>Львівська</p>
-                        <p className="page__text"><img className="main-info__img" src={mail_icon} /><b>Поштовий індекс: </b>82420</p>
-                        <p className="page__text"><img className="main-info__img" src={map_pin_icon} /><b>Адреса: </b>вул.Польова,4</p>
+                        <p className="main-info__title">Адреса \ Локація</p>
+                        <p className="main-info__text"><img className="main-info__img" src={house_icon} /><b>Населений пункт: </b>Кавсько</p>
+                        <p className="main-info__text"><img className="main-info__img" src={map_icon} /><b>Область: </b>Львівська</p>
+                        <p className="main-info__text"><img className="main-info__img" src={mail_icon} /><b>Поштовий індекс: </b>82420</p>
+                        <p className="main-info__text"><img className="main-info__img" src={map_pin_icon} /><b>Адреса: </b>вул.Польова,4</p>
                     </div>
                     <div className="main-info__column">
-                        <p className="page__title">Контактні дані</p>
-                        <p className="page__text"><img className="main-info__img" src={phone_icon} /><b>Телефон:</b> (03245)38559</p>
+                        <p className="main-info__title">Контактні дані</p>
+                        <p className="main-info__text"><img className="main-info__img" src={phone_icon} /><b>Телефон:</b> (03245)38559</p>
                     </div>
                     <div className="main-info__column">
-                        <p className="page__title">Ми в соціальних мережах</p>
-                        <p className="page__text"><img className="main-info__img" src={fasebook_icon} /><b>Facebook:</b><a className="main-info__link" href="https://www.facebook.com/groups/2042168039352010/about" target="_blank"> Бібліотека с.Кавсько</a></p>
+                        <p className="main-info__title">Ми в соціальних мережах</p>
+                        <p className="main-info__text"><img className="main-info__img" src={fasebook_icon} /><b>Facebook:</b><a className="main-info__link" href="https://www.facebook.com/groups/2042168039352010/about" target="_blank"> Бібліотека с.Кавсько</a></p>
                     </div>
                 </section>
             </div>

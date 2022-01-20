@@ -12,11 +12,22 @@
 .header__body {
     display: flex;
     height: auto;
+    height: 80px;
     justify-content: space-between;
+}
+
+.header__logo {
+    height: 100%;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    z-index: 3;
+    position: relative;
 }
 
 .header__list {
     display: flex;
+    height: 100%;
     position: relative;
     justify-content: flex-start;
 }
@@ -24,8 +35,17 @@
 .header__link {
     list-style: none;
     font-size: 1.2rem;
-    padding: 20px 10px;
+    padding: 0px 10px;
+    height: 100%;
     transition: .5s ease;
+}
+
+.header__link a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header__link:hover {
@@ -36,14 +56,18 @@
     margin-left: auto;
 }
 
+.header__burger {
+    display: none;
+}
+
 .header__burger.active::before {
     transform: rotate(45deg);
-    top: 26px;
+    top: 24px;
 }
 
 .header__burger.active::after {
     transform: rotate(-45deg);
-    bottom: 22px;
+    bottom: 24px;
 }
 
 .header__burger.active span {
@@ -58,9 +82,12 @@
         width: 50px;
         height: 50px;
         z-index: 3;
-        background-color: #292780;
+        background-color: #4aa2d1;
         border-radius: 50%;
+        margin: 15px 0px;
+        margin-left: auto;
     }
+
     .header__burger span {
         position: absolute;
         background-color: #fff;
@@ -70,6 +97,7 @@
         left: 12px;
         transition: all 0.3s ease;
     }
+
     .header__burger:before,
     .header__burger:after {
         content: '';
@@ -80,10 +108,38 @@
         left: 12px;
         transition: all 0.3s ease;
     }
+
     .header__burger:before {
         top: 12px;
     }
+
     .header__burger:after {
         bottom: 12px;
+    }
+
+    .header__menu {
+        position: absolute;
+        left: 0;
+        padding-top: 80px ;
+        top: -500px;
+        background-color: #fff;
+        box-shadow: 1px 2px 10px rgb(109, 96, 96);
+        width: 100%;
+        transition: 1s ease;
+    }
+
+    .header__menu.active {
+        top: 0;
+    }
+
+    .header__list {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .header__link {
+        width: 100%;
+        padding: 15px 0px;
     }
 }
