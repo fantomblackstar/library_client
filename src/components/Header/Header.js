@@ -1,5 +1,5 @@
 import './Header.css';
-import logo_icon from '../../public/image/logo.png';
+import logo_icon from '../../pages/image/logo.png';
 
 export default function Header(){
     function toggleHeader () {
