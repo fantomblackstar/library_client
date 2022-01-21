@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Header from './components/header/Header';
@@ -11,6 +11,17 @@ import SignIn from './pages/signIn/SingIn';
 import Footer from './components/footer/Footer';
 
 function App() {
+  const [logIn, setLogIn] = useState(false);
+  
+  function onLogIn(){
+    console.log('login succesful');
+    setLogIn(true);
+  }
+
+  useEffect(()=> {
+    console.log(logIn);
+  },[logIn])
+
   return (
     <div className="App">
       <Header />
@@ -19,7 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/new" element={<NewBooks />} />
-          <Route path="/admin" element={<SignIn />} />
+          <Route path="/admin" element={<SignIn onLogIn={onLogIn}/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

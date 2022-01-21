@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './SignIn.css';
 import avatar_icon from '../image/user.png';
 import eye_icon from '../image/eye-black.png';
-import ModalWindow from "../../components/modalWindow/ModalWindow";
 
-export default function SignIn() {
+export default function SignIn ( props ) {
     const [emailInput,setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
+    const navigate = useNavigate();
 
     function onChangePasswordInput (event) {
         let value = event.target.value.replace(/\W/g,'');
@@ -18,14 +19,31 @@ export default function SignIn() {
         setEmailInput(value);
     }
 
-    async function sendRequest (event) {
+    function onSubmit(event){
         event.preventDefault();
+        let result = sendRequest();
+        if(result){
+            props.onLogIn();
+            navigate("/");
+        }
+        else {
+            let errorBlock = document.querySelector('.admin-error-message');
+            errorBlock.classList.remove('hide');
+            errorBlock.textContent =  `Invalid password`;
+            setTimeout(() => {
+                document.querySelector('.admin-error-message').classList.add('hide');
+            },3*1000);
+        }
+    }
+
+    async function sendRequest () {
         console.log(emailInput, passwordInput);
+        return true;
     }
 
     return (
         <div className="page authorisation">
-            <form className="sign-in" onSubmit={sendRequest}>
+            <form className="sign-in" onSubmit={onSubmit}>
                 <div className="imgcontainer">
                     <img src={avatar_icon} alt="avatar" className="avatar" />
                 </div>
