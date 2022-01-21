@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './SignIn.css';
+import '../styles/SignIn.css';
 import avatar_icon from '../image/user.png';
 import eye_icon from '../image/eye-black.png';
 

@@ -1,20 +1,19 @@
-import logo from './logo.svg';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
-import Header from './components/header/Header';
-import Home from './pages/home/Home';
-import AboutUs from './pages/aboutUs/AboutUs';
-import NewBooks from './pages/newBooks/NewBooks';
-import ErrorPage from './pages/errorPage/Errorpage';
-import SignIn from './pages/signIn/SingIn';
-import Footer from './components/footer/Footer';
+import Header from './components/Header';
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
+import NewBooks from './pages/NewBooks';
+import ErrorPage from './pages/Errorpage';
+import SignIn from './pages/SingIn';
+import Footer from './components/Footer';
 
 function App() {
   const [logIn, setLogIn] = useState(false);
   
   function onLogIn(){
-    console.log('login succesful');
+    // console.log('login succesful');
     setLogIn(true);
   }
 

@@ -1,6 +1,5 @@
-import './Header.css';
-import logo_icon from '../../pages/image/logo.png';
-
+import '../styles/Header.css';
+import logo_icon from "../image/logo.png";
 export default function Header(){
     function toggleHeader () {
         document.querySelector('.header__menu').classList.toggle('active');
