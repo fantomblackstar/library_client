@@ -13,7 +13,8 @@ import mail_icon from '../image/mail.png';
 
 import '../styles/AboutUs.css';
 
-export default function AboutUs() {
+export default function AboutUs(props) {
+    console.log(props.logIn);
     return (
         <div className="page about-us">
             <div className="container">
