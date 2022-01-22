@@ -67,6 +67,7 @@ a {
 .page__title {
   font-size: 1.3rem;
   text-align: left;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
 

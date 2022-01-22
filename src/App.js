@@ -2,12 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, HashRouter } from "react-router-dom";
 import './App.css';
 import Header from './components/Header';
-import Home from './pages/Home';
-import AboutUs from './pages/AboutUs';
-import NewBooks from './pages/NewBooks';
-import ErrorPage from './pages/Errorpage';
-import SignIn from './pages/SingIn';
 import Footer from './components/Footer';
+import AppRouter from './components/AppRouter';
 
 function App() {
   const [logIn, setLogIn] = useState(false);
@@ -19,14 +15,8 @@ function App() {
   return (
     <div className="App">
       <HashRouter >
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutUs logIn={logIn} />} />
-          <Route path="/new" element={<NewBooks />} />
-          <Route path="/admin" element={<SignIn onLogIn={onLogIn} />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        <Header logIn={logIn}/>
+        <AppRouter logIn = {logIn} onLogIn={onLogIn}/>
       </HashRouter>
       <Footer />
     </div>

@@ -4,7 +4,7 @@ import '../styles/SignIn.css';
 import avatar_icon from '../image/user.png';
 import eye_icon from '../image/eye-black.png';
 
-export default function SignIn ( props ) {
+function SignIn ( props ) {
     const [emailInput,setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ export default function SignIn ( props ) {
         setPasswordInput(value);
     }
 
-    function onChangeEmailInput (event) {
+    function onChangeLoginInput (event) {
         let value = event.target.value.replace(/[^a-zA-Z0-9@.]/g,'');
         setEmailInput(value);
     }
@@ -37,7 +37,7 @@ export default function SignIn ( props ) {
     }
 
     async function sendRequest () {
-        console.log(emailInput, passwordInput);
+        // console.log(emailInput, passwordInput);
         return true;
     }
 
@@ -47,8 +47,8 @@ export default function SignIn ( props ) {
                 <div className="imgcontainer">
                     <img src={avatar_icon} alt="avatar" className="avatar" />
                 </div>
-                <label className="sign-in__label"><b>Пошта</b></label>
-                <input type="text" className='input-email' name="email" placeholder="Enter email" onChange={onChangeEmailInput} value={emailInput}/>
+                <label className="sign-in__label"><b>Логін</b></label>
+                <input type="text" className='input-email' name="login" placeholder="Enter login" onChange={onChangeLoginInput} value={emailInput}/>
                 <label className="sign-in__label"><b>Пароль</b></label>
                 <div className="sign-in__group">
                     <input type="password" className='input-password' name="psw" placeholder="Enter password" onChange={onChangePasswordInput} value={passwordInput}/>
@@ -60,3 +60,6 @@ export default function SignIn ( props ) {
         </div>
     )
 }
+
+
+export default SignIn;

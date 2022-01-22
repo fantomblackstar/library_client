@@ -1,0 +1,20 @@
+.book-icon {
+    width: 40%;
+    position: relative;
+}
+
+
+.book-icon__img {
+    width: 100%;
+    min-height: 500px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin-bottom: 10px ;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.book-icon__input {
+    cursor: pointer;
+    margin-left: 10%;
+}
