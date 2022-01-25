@@ -58,7 +58,7 @@ a {
 
 .page {
   width: 100%;
-  min-height: calc(100vh - 130px);
+  min-height: calc(100vh - 155px);
   position: relative;
   padding-top: 30px;
   box-sizing: border-box;
@@ -67,6 +67,7 @@ a {
 .page__title {
   font-size: 1.3rem;
   text-align: left;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
 
@@ -118,5 +119,9 @@ a {
   }
   .container {
     width: 100%;
+  }
+
+  .row {
+    display: block;
   }
 }

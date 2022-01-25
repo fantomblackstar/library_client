@@ -97,8 +97,19 @@ img.avatar {
 }
 
 .admin-error-message {
+    display: block;
+    width: 100%;
     color: brown ;
+    position: absolute;
+    bottom: -10px;
+    text-align: center;
+    left: 0px;
 }
+
+.hide {
+    display: none;
+}
+
 @media (max-width: 992px){
     .sign-in {
         width: 300px;

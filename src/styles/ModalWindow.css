@@ -1,9 +1,6 @@
 .modal-wrap-center {
     width: 100%;
-    height: calc(100vh - 70px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
     position: absolute;
     top:0;
     left: 0;
@@ -18,7 +15,7 @@
     height: 100%;
     background-color: rgb(177, 177, 177);
     opacity: .7;
-    z-index: 10;
+    z-index: 105;
     position: absolute;
     left: 0;
     top: 0;
@@ -30,10 +27,13 @@
     padding: 30px 20px 20px;
     box-sizing: border-box;
     background-color: #FFF;
-    z-index: 15;
+    z-index: 150;
     position: absolute;
     margin: 0px auto;
-    margin-top: -20vh;
+   left: 50%;
+   top: 40%;
+   transform: translate(-50%, 0%);
+    position: fixed;
 }
 
 .modal-window__text {

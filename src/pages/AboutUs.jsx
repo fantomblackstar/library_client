@@ -11,9 +11,10 @@ import map_pin_icon from '../image/pin.png';
 import fasebook_icon from '../image/facebook.png';
 import mail_icon from '../image/mail.png';
 
-import './AboutUs.css';
+import '../styles/AboutUs.css';
 
 export default function AboutUs() {
+    
     return (
         <div className="page about-us">
             <div className="container">

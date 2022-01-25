@@ -1,0 +1,147 @@
+.new-book {
+    width: 100%;
+    position: relative;
+}
+
+.new-book__button {
+    margin-top: 20px;
+    background-color: #345be7;
+    padding: 12px 50px;
+    font-size: 1rem;
+    color: #fff;
+    border:none;
+    cursor: pointer;
+}
+
+.book-icon {
+    width: 30%;
+    height: auto;
+    position: relative;
+}
+
+.book-icon__img {
+    width: 100%;
+    height: 85%;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin-bottom: 10px ;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.book-icon__input {
+    cursor: pointer;
+    margin-left: 10%;
+}
+
+.book-info {
+    width: 60%;
+    position: relative;
+    margin-left: 50px;
+    text-align: left;
+}
+
+.book-info__title,
+.book-about__title,
+.book-icon__title {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.book-info__group {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    position: relative;
+}
+
+.book-info__name {
+    opacity: .8;
+    width: 30%;
+    margin-bottom: 3px;
+}
+
+.book-info__input {
+    border:none;
+    position: relative;
+    width: 50%;
+    padding: 10px 10px 3px;
+    border-bottom: 1px solid  rgb(179, 179, 179);
+    background-color: transparent;
+    outline: none;
+    color: rgb(0, 0, 0);
+    transition: .5s;
+    z-index: 2;
+    font-size: 18px;
+}
+
+.book-info__input:focus {
+    border-bottom: 1px solid black;
+    width:60%;
+}
+
+.book-about {
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.book-about__textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 400px;
+   padding: 10px 20px;
+   color: black;
+   border: 2px dotted grey;
+   border-bottom: 1px solid grey;
+   outline: none;
+   transition: 2s ease;
+   resize: none;
+   border-radius: 5px;
+   font-family: 'Montserrat', sans-serif;
+   line-height: 1.5rem;
+   font-size: 1rem;
+}
+
+@media (max-width:1200px){
+    .book-info {
+        width: 70%;
+    }
+}
+
+@media (max-width:767px){
+    .book-info,
+    .book-icon {
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+
+    .book-icon__img {
+        width: 70%;
+        margin: 0px auto 20px;
+        height: 300px;
+    }
+
+    .book-info__group {
+        display: block;
+    }
+
+    .book-info__name,
+    .book-info__input {
+        width:90%;
+    }
+
+    .book-info__input {
+        margin-bottom: 15px;
+        padding-top: 0px;
+        box-sizing: border-box;
+    }
+
+    .book-info__input:focus {
+        width: 100%;
+    }
+}

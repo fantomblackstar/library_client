@@ -10,19 +10,29 @@ import SignIn from './public/SignIn/SingIn';
 import Footer from './components/footer/Footer';
 
 function App() {
+  const [logIn, setLogIn] = useState(false);
+
+  function showModalWindow(text) {
+    document.querySelector('.modal-window__text').innerHTML = text;
+    document.querySelector('.modal-wrap-center').classList.remove('hide');
+  }
+
+  function onLogIn() {
+    setLogIn(true);
+  }
+
   return (
     <div className="App">
-      <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/new" element={<NewBooks />} />
-          <Route path="/admin" element={<SignIn />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </BrowserRouter>
-      <Footer/>
+      <HashRouter >
+        <Header logIn={logIn} />
+        <AppRouter
+          logIn={logIn}
+          onLogIn={onLogIn}
+          showModalWindow={showModalWindow}
+        />
+      </HashRouter>
+      <Footer />
+      <ModalWindow />
     </div>
   );
 }
