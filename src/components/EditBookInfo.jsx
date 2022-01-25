@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import '../styles/EditBookInfo.css';
+import React from "react";
 
 function EditBookInfo(props){
 

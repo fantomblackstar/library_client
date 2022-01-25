@@ -1,5 +1,4 @@
 import React from "react";
-import '../styles/EditBookIcon.css';
 
 function EditBookIcon (props) {
 

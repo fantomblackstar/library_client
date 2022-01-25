@@ -7,6 +7,8 @@
 
 .footer__body {
     position: relative;
+    display: flex;
+    justify-content: space-between;
     padding-top: 10px;
 }
 

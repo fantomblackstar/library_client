@@ -120,4 +120,8 @@ a {
   .container {
     width: 100%;
   }
+
+  .row {
+    display: block;
+  }
 }
