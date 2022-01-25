@@ -1,16 +1,17 @@
 .book-icon {
-    width: 40%;
+    width: 30%;
+    height: auto;
     position: relative;
 }
 
-
 .book-icon__img {
     width: 100%;
-    min-height: 500px;
+    height: 85%;
     border: 1px solid blue;
     border-radius: 5px;
     margin-bottom: 10px ;
-    background-size: contain;
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
 }
 

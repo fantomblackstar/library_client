@@ -1,3 +1,14 @@
 .new-book {
     width: 100%;
+    position: relative;
+}
+
+.new-book__button {
+    margin-top: 20px;
+    background-color: #345be7;
+    padding: 12px 50px;
+    font-size: 1rem;
+    color: #fff;
+    border:none;
+    cursor: pointer;
 }

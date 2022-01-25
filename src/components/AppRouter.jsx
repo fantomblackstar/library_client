@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import SignIn from "../pages/SingIn";
 import Home from "../pages/Home";
 import AboutUs from "../pages/AboutUs";
@@ -15,8 +15,8 @@ function AppRouter(props) {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/admin" element={<SignIn onLogIn={props.onLogIn} />} />
-                <Route path="/about" element={<AboutUs logIn={props.logIn} />} />
-                <Route path="/newbook" element={<NewBook />} />
+                <Route path="/about" element={<AboutUs/>} />
+                <Route path="/newbook" element={<NewBook showModalWindow={props.showModalWindow}/>} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
             :

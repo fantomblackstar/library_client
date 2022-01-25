@@ -41,6 +41,11 @@ function SignIn ( props ) {
         return true;
     }
 
+    function showPassword (event) {
+        document.querySelector('.input-password').type = 'text';
+        setTimeout(() =>  document.querySelector('.input-password').type = 'password', 2*1000)
+    }
+
     return (
         <div className="page authorisation">
             <form className="sign-in" onSubmit={onSubmit}>
@@ -52,7 +57,7 @@ function SignIn ( props ) {
                 <label className="sign-in__label"><b>Пароль</b></label>
                 <div className="sign-in__group">
                     <input type="password" className='input-password' name="psw" placeholder="Enter password" onChange={onChangePasswordInput} value={passwordInput}/>
-                    <img src={eye_icon} alt='show_pass' className="show-pass-img" />
+                    <img src={eye_icon} alt='show_pass' className="show-pass-img" onClick={showPassword}/>
                 </div>
                 <button type="submit">Ввійти</button>
                 <p className='admin-error-message hide'>Password incorect</p>
