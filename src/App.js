@@ -1,13 +1,10 @@
-import React from 'react';
-import { HashRouter, Routes, Route } from "react-router-dom";
+import React, { useState } from 'react';
+import { HashRouter } from "react-router-dom";
 import './App.css';
-import Header from './components/Header/Header';
-import Home from './public/Home/Home';
-import AboutUs from './public/AboutUs/AboutUs';
-import NewBooks from './public/NewBooks/NewBooks';
-import ErrorPage from './public/ErrorPage/Errorpage';
-import SignIn from './public/SignIn/SingIn';
-import Footer from './components/footer/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import AppRouter from './components/AppRouter';
+import ModalWindow from './components/ModalWindow';
 
 function App() {
   const [logIn, setLogIn] = useState(false);

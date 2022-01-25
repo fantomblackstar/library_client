@@ -7,8 +7,8 @@ import EditBookAbout from "../components/EditBookAbout";
 
 export default function NewBook(props) {
     const [info, setInfo] = useState({
-        'name': props.name || '',
-        'actor': props.actor || '',
+        'name': props.name || 'Як стати кодером',
+        'actor': props.actor || 'Василь Варивода',
         'language': props.language || '',
         'orgnName': props.orgnName || '',
         'orgnLanguage': props.orgnLanguage || '',
@@ -47,7 +47,7 @@ export default function NewBook(props) {
                 props.showModalWindow('Помилка з сервером, спробуйте пізніше');
             }
         }
-
+        console.log('111');
     }
 
     function onChangeInfo(key, value) {
