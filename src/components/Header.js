@@ -1,8 +1,7 @@
 import '../styles/Header.css';
 import { useNavigate } from 'react-router-dom';
 import logo_icon from "../image/logo.png";
-export default function Header (props) {
-    
+function Header (props) {
     function toggleHeader () {
         document.querySelector('.header__menu').classList.toggle('active');
         document.querySelector('.header__burger').classList.toggle('active');
@@ -43,3 +42,5 @@ export default function Header (props) {
     </div>
     );
 }
+
+export default Header;
