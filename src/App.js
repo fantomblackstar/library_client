@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import AppRouter from './components/AppRouter';
 import ModalWindow from './components/ModalWindow';
 
+
+
 function App() {
   const [logIn, setLogIn] = useState(false);
 

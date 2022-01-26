@@ -4,26 +4,28 @@ import '../styles/NewBook.css';
 import EditBookIcon from "../components/EditBookIcon";
 import EditBookInfo from "../components/EditBookInfo";
 import EditBookAbout from "../components/EditBookAbout";
+import { postData } from "../postData";
 
 export default function NewBook(props) {
     const [info, setInfo] = useState({
         'name': props.name || 'Як стати кодером',
         'actor': props.actor || 'Василь Варивода',
-        'language': props.language || '',
-        'orgnName': props.orgnName || '',
-        'orgnLanguage': props.orgnLanguage || '',
-        'cover': props.cover || '',
-        'page': props.page || '',
-        'size': props.size || '',
-        'publish': props.publish || '',
-        'age': props.age || '',
-        'translate': props.translate || '',
-        'section': props.section || '',
-        'about': props.about || '',
+        'language': props.language || 'ua',
+        'orgnName': props.orgnName || 'dsa',
+        'orgnLanguage': props.orgnLanguage || 'asd',
+        'cover': props.cover || 'das',
+        'page': props.page || '12',
+        'size': props.size || '13',
+        'publish': props.publish || 'asd',
+        'age': props.age || 'asda',
+        'translate': props.translate || 'das',
+        'section': props.section || 'ads',
+        'about': props.about || 'das',
         'img': props.img || ''
     });
 
     const navigate = useNavigate();
+
 
     function onSubmitForm(event) {
         event.preventDefault();
@@ -37,8 +39,14 @@ export default function NewBook(props) {
             }
         }
         if (validateForm) {
-            console.log(info);
             // send data on server
+            console.log(info);
+            postData(info)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+
             if (true) {
                 props.showModalWindow('Книгу успішно додано');
                 navigate('/');
