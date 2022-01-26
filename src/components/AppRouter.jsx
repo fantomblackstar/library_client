@@ -11,7 +11,7 @@ import NotFound from "../pages/NotFound";
 function AppRouter(props) {
     const auth = props.logIn;
     return (
-        auth ?
+        auth ? 
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/admin" element={<SignIn onLogIn={props.onLogIn} />} />

@@ -1,0 +1,16 @@
+.fresh-books {
+    width: 100%;
+    height: 250px;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.fresh-book {
+    width: 20%;
+    height: 100%;
+    background-color: grey;
+}
