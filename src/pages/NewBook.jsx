@@ -8,26 +8,26 @@ import { postData } from "../postData";
 
 export default function NewBook(props) {
     const [info, setInfo] = useState({
-        'name': props.name || 'Як стати кодером',
-        'actor': props.actor || 'Василь Варивода',
-        'language': props.language || 'ua',
-        'orgnName': props.orgnName || 'dsa',
-        'orgnLanguage': props.orgnLanguage || 'asd',
-        'cover': props.cover || 'das',
-        'page': props.page || '12',
-        'size': props.size || '13',
-        'publish': props.publish || 'asd',
-        'age': props.age || 'asda',
-        'translate': props.translate || 'das',
-        'section': props.section || 'ads',
-        'about': props.about || 'das',
+        'name': props.name || '',
+        'actor': props.actor || '',
+        'language': props.language || '',
+        'orgnName': props.orgnName || '',
+        'orgnLanguage': props.orgnLanguage || '',
+        'cover': props.cover || '',
+        'page': props.page || '',
+        'size': props.size || '',
+        'publish': props.publish || '',
+        'age': props.age || '',
+        'translate': props.translate || '',
+        'section': props.section || '',
+        'about': props.about || '',
         'img': props.img || ''
     });
 
     const navigate = useNavigate();
 
 
-    function onSubmitForm(event) {
+    async function onSubmitForm(event) {
         event.preventDefault();
         let validateForm = true;
         for (let key in info) {
@@ -41,13 +41,12 @@ export default function NewBook(props) {
         if (validateForm) {
             // send data on server
             console.log(info);
-            postData(info, 'new-book')
+            
+            let res = await postData(info, 'new-book')
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            });
+            .then(data => data);
 
-            if (true) {
+            if (res) {
                 props.showModalWindow('Книгу успішно додано');
                 navigate('/');
             }

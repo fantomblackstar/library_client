@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FreshBooks from "../components/FreshBooks";
 import AllBooks from "../components/AllBooks";
+import { postData } from "../postData";
 
 function Home(props) {
 
@@ -16,10 +17,10 @@ function Home(props) {
 
 
     async function getBooks() {
-        console.log('send request on server');
-        await fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(json => setBooksObj(json));
+        let res = await postData({}, 'get-books')
+        .then(response => response.json())
+        .then(data => data);
+        console.log(res);
     }
 
     return (booksObj === '') ? (
