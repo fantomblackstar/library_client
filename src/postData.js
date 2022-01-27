@@ -1,11 +1,11 @@
-export async function postData(data) {
-    const response = await fetch('http://localhost:3080', {
+export async function postData(data, path = '') {
+    const response = await fetch(`http://localhost:3080/${path}`, {
         method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
+        // mode: 'no-cors',
+        // cache: 'no-cache',
+        // credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(data)
     });

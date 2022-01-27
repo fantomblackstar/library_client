@@ -41,7 +41,7 @@ export default function NewBook(props) {
         if (validateForm) {
             // send data on server
             console.log(info);
-            postData(info)
+            postData(info, 'new-book')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
