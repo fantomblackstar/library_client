@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FreshBooks from "../components/FreshBooks";
+import AllBooks from "../components/AllBooks";
 
 function Home(props) {
 
@@ -15,7 +16,7 @@ function Home(props) {
 
 
     async function getBooks() {
-        console.log('send request');
+        console.log('send request on server');
         await fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(json => setBooksObj(json));
@@ -25,6 +26,7 @@ function Home(props) {
         <div className="page">
             <div className="container">
                 <p className="page__title">Новинки</p>
+                <p>Помилка в отриманні даних спробуйте пізніше</p>
             </div>
 
         </div>
@@ -34,8 +36,9 @@ function Home(props) {
             <div className="container">
                 <p className="page__title">Новинки</p>
                 <FreshBooks books={booksObj}/>
+                <p className="page__title">Всі книги</p>
+                <AllBooks books={booksObj}/>
             </div>
-
         </div>
     )
 }

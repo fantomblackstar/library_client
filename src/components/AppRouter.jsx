@@ -16,7 +16,7 @@ function AppRouter(props) {
                 <Route path="/" element={<Home />} />
                 <Route path="/admin" element={<SignIn onLogIn={props.onLogIn} />} />
                 <Route path="/about" element={<AboutUs/>} />
-                <Route path="/newbook" element={<NewBook showModalWindow={props.showModalWindow}/>} />
+                <Route path="/new-book" element={<NewBook showModalWindow={props.showModalWindow}/>} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
             :

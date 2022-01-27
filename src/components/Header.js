@@ -31,7 +31,7 @@ function Header (props) {
             <nav className="header__menu">
                 <ul className="header__list">
                     <li className="header__link"><a onClick={()=> navigate('/')}>Головна</a></li>
-                    <li className="header__link"><a onClick={()=> navigate('/newbook')}>Нова Книга</a></li>
+                    <li className="header__link"><a onClick={()=> navigate('/new-book')}>Нова Книга</a></li>
                     <li className="header__link"><a onClick={()=> navigate('/about')}>Про нас</a></li>
                 </ul>
             </nav>
