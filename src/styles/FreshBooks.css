@@ -1,21 +1,28 @@
 .fresh-books {
     width: 100%;
-    height: fit-content;
+    height: auto;
     box-sizing: border-box;
-    padding: 10px 0px 10px 10px;
-    border: 1px solid rgb(165, 164, 164);
-    display: flex;
-    justify-content: space-between;
+    padding: 30px 0px 0px 20px ;
+    justify-content: center;
     position: relative;
     border-radius: 2px;
-    margin-bottom: 30px;
-    box-shadow: 1px 2px 10px rgb(109, 96, 96);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.fresh-books__body {
+    width: calc((100%) / 6 * 10);
+    height: auto;
+    display: flex;
+    position: relative;
+    transition: 1s ease;
+    left: 0;
+    top: 0;
 }
 
 .fresh-book {
-    width: 20%;
+    width: calc(100% / 10 - 10px);
     height: auto;
-    background-color: rgb(179, 220, 247);
     position: relative;
     margin-right: 10px;
     padding: 20px 5px 5px;
@@ -26,12 +33,75 @@
     border-radius: 2px;
 }
 
+.fresh-book__button_left {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 30%;
+    left: -50px;
+}
+
+.fresh-book__button_left::before {
+    content: "‹";
+    font-size: 60px;
+}
 .fresh-book__image {
     width: 90%;
-    height: 130px ;
+    height: 150px ;
 }
 
 .fresh-book:hover {
-    border: 3px solid blue;
+    box-shadow: 1px 2px 10px rgb(109, 96, 96);
     transform: scale(105%,105%);
+}
+
+.fresh-books__dots {
+    margin: 20px auto;
+    position: relative;
+}
+
+.fresh-books__dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border:1px solid #686565;
+    margin-right: 5px;
+    opacity: 1;
+}
+
+.fresh-books__dot.active {
+    width: 9px;
+    height: 9px;
+    background-color: #757575;
+}
+
+@media (max-width:1200px){
+    .fresh-books__body {
+        width: calc((100%) / 5 * 10);
+    }
+}
+
+
+@media (max-width:992px){
+    .fresh-books__body {
+        width: calc((100%) / 4 * 10);
+    }
+}
+
+
+@media (max-width:767px){
+
+    .fresh-books {
+        padding: 10px 0px 0px 10px;
+    }
+
+    .fresh-books__body {
+        width: calc((100%) / 2 * 10);
+    }
+
+    .fresh-book:hover,
+    .fresh-book:focus {
+         transform: scale(100%,100%);
+    }
 }

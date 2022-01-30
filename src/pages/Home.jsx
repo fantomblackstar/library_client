@@ -1,47 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FreshBooks from "../components/FreshBooks";
 import AllBooks from "../components/AllBooks";
-import { postData } from "../postData";
+import Preloader from "../components/Preloader";
 
-function Home(props) {
-
-    const [booksObj, setBooksObj] = useState('');
-
-    useEffect(() => {
-        if (booksObj === '') getBooks();
-        else {
-         
-        }
-
-    }, [booksObj]);
-
-
-    async function getBooks() {
-        let res = await postData({}, 'get-books')
-        .then(response => response.json())
-        .then(data => data);
-        console.log(res);
-    }
-
-    return (booksObj === '') ? (
+function Home (props) {
+    return (props.booksObj === '') ? (
         <div className="page">
-            <div className="container">
-                <p className="page__title">Новинки</p>
-                <p>Помилка в отриманні даних спробуйте пізніше</p>
-            </div>
-
+            <Preloader />
         </div>
     ) :
-    (
-        <div className="page">
-            <div className="container">
-                <p className="page__title">Новинки</p>
-                <FreshBooks books={booksObj}/>
-                <p className="page__title">Всі книги</p>
-                <AllBooks books={booksObj}/>
+        (
+            <div className="page">
+                <div className="container">
+                    <p className="page__title">Новинки</p>
+                    <FreshBooks books={props.booksObj} />
+                    <p className="page__title">Всі книги</p>
+                    <AllBooks books={props.booksObj} />
+                </div>
             </div>
-        </div>
-    )
+        )
 }
 
 export default Home;

@@ -1,36 +1,37 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '../styles/NewBook.css';
+import '../styles/Book.css';
 import EditBookIcon from "../components/EditBookIcon";
 import EditBookInfo from "../components/EditBookInfo";
 import EditBookAbout from "../components/EditBookAbout";
 import { postData } from "../postData";
 
-export default function NewBook(props) {
+export default function NewBook (props) {
     const [info, setInfo] = useState({
         'name': props.name || '',
-        'actor': props.actor || '',
-        'language': props.language || '',
-        'orgnName': props.orgnName || '',
-        'orgnLanguage': props.orgnLanguage || '',
-        'cover': props.cover || '',
+        'avtor': props.avtor || '',
+        'language': props.language || 'Українська',
+        'cover': props.cover || 'Тверда',
         'page': props.page || '',
         'size': props.size || '',
         'publish': props.publish || '',
-        'age': props.age || '',
         'translate': props.translate || '',
         'section': props.section || '',
         'about': props.about || '',
-        'img': props.img || ''
+        'img': props.img || '',
+        'ignoreimg': false
     });
 
     const navigate = useNavigate();
 
-
-    async function onSubmitForm(event) {
+    async function onSubmitForm (event) {
         event.preventDefault();
         let validateForm = true;
         for (let key in info) {
+            if(key === 'img' && info.ignoreimg) {
+                info.img = '';
+                continue;
+            }
             if (info[`${key}`] === '') {
                 console.log(key);
                 props.showModalWindow('Заповніть усі поля');
@@ -38,10 +39,8 @@ export default function NewBook(props) {
                 break;
             }
         }
+
         if (validateForm) {
-            // send data on server
-            console.log(info);
-            
             let res = await postData(info, 'new-book')
             .then(response => response.json())
             .then(data => data);
@@ -54,10 +53,9 @@ export default function NewBook(props) {
                 props.showModalWindow('Помилка з сервером, спробуйте пізніше');
             }
         }
-        console.log('111');
     }
 
-    function onChangeInfo(key, value) {
+    function onChangeInfo (key, value) {
         setInfo(prevValue => ({ ...prevValue, [`${key}`]: value }));
     }
 
@@ -67,11 +65,11 @@ export default function NewBook(props) {
                 <p className="page__title">Добавлення нової книги</p>
                 <form className="new-book" onSubmit={onSubmitForm}>
                     <div className="row">
-                        <EditBookIcon onChangeInfo={onChangeInfo} info={info} />
-                        <EditBookInfo onChangeInfo={onChangeInfo} info={info} />
+                        <EditBookIcon onChangeInfo={onChangeInfo} bookInfo={info} />
+                        <EditBookInfo onChangeInfo={onChangeInfo} bookInfo={info} />
                     </div>
-                    <EditBookAbout onChangeInfo={onChangeInfo} info={info} />
-                    <button className="new-book__button">Добавити книгу</button>
+                    <EditBookAbout onChangeInfo={onChangeInfo} bookInfo={info} />
+                    <button className="new-book__button button-submit">Добавити книгу</button>
                 </form>
             </div>
         </div>
