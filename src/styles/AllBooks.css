@@ -12,6 +12,15 @@
     margin-bottom: 20px;
 }
 
+.all-books__row.not-full {
+ justify-content: flex-start;
+}
+
+
+.all-books__row.not-full .short-book {
+    margin-right: 13%;
+}
+
 .short-book {
     width: 25%;
     height: 100%;

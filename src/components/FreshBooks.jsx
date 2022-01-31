@@ -39,7 +39,7 @@ function FreshBooks(props) {
 
     function handleOnWeel(event) {
         event = event || window.event;
-        if(canSlide.current){
+        if (canSlide.current) {
             deltaX.current += event.deltaY || event.detail || event.wheelDelta;
             canSlide.current = false;
             deltaX.current > 0 ? handleStepSlider(-1) : handleStepSlider(1);

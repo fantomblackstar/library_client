@@ -11,7 +11,7 @@ import { postData } from "./postData";
 function App() {
   const [logIn, setLogIn] = useState(false);
   const [booksObj, setBooksObj] = useState('');
-  const adminLogin = useRef('');
+  const adminData = useRef({login:'', password : ''});
 
   useEffect(() => {
     if (booksObj === '') getBooks();
@@ -29,8 +29,8 @@ function App() {
     document.querySelector('.modal-wrap-center').classList.remove('hide');
   }
 
-  function onLogIn(login) {
-    adminLogin.current = login;
+  function onLogIn(login, password) {
+    adminData.current = {'login' : login, 'password' : password};
     setLogIn(true);
   }
 
@@ -43,7 +43,7 @@ function App() {
           onLogIn={onLogIn}
           showModalWindow={showModalWindow}
           booksObj={booksObj}
-          adminLogin={adminLogin}
+          adminData={adminData}
         />
       </HashRouter>
       <Footer />

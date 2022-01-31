@@ -28,7 +28,7 @@ function SignIn(props) {
         else {
             let result = sendRequest();
             if (result) {
-                props.onLogIn(loginInput);
+                props.onLogIn(loginInput, passwordInput);
                 navigate("/");
             }
             else {

@@ -16,7 +16,7 @@ function Header (props) {
     return (!props.logIn)? (
         <div className="header">
             <div className="container header__body">
-                <div className='header__logo block-img'><img className='block-img__img' src={logo_icon}/></div>
+                <div className='header__logo block-img'  onClick={() => navigate('/')}><img className='block-img__img' src={logo_icon}/></div>
                 <nav className="header__menu" ref={divMenu}>
                     <ul className="header__list">
                         <li className="header__link"><a onClick={() => {navigate('/'); toggleHeader()}}>Головна</a></li>
@@ -31,7 +31,7 @@ function Header (props) {
     ): (
         <div className="header">
         <div className="container header__body">
-            <div className='header__logo block-img'><img className='block-img__img' src={logo_icon}/></div>
+            <div className='header__logo block-img' onClick={() => navigate('/')}><img className='block-img__img' src={logo_icon}/></div>
             <nav className="header__menu" ref={divMenu}>
                 <ul className="header__list">
                     <li className="header__link"><a onClick={()=> {navigate('/'); toggleHeader()}}>Головна</a></li>
