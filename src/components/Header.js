@@ -1,10 +1,14 @@
+import React, {useRef} from 'react';
 import '../styles/Header.css';
 import { useNavigate } from 'react-router-dom';
 import logo_icon from "../image/logo.png";
+
 function Header (props) {
+    const divBurger = useRef(null);
+    const divMenu = useRef(null);
     function toggleHeader () {
-        document.querySelector('.header__menu').classList.toggle('active');
-        document.querySelector('.header__burger').classList.toggle('active');
+        divMenu.current.classList.toggle('active');
+        divBurger.current.classList.toggle('active');
     }
 
     const navigate = useNavigate();
@@ -13,13 +17,13 @@ function Header (props) {
         <div className="header">
             <div className="container header__body">
                 <div className='header__logo block-img'><img className='block-img__img' src={logo_icon}/></div>
-                <nav className="header__menu">
+                <nav className="header__menu" ref={divMenu}>
                     <ul className="header__list">
-                        <li className="header__link"><a onClick={()=> navigate('/')}>Головна</a></li>
-                        <li className="header__link"><a onClick={()=> navigate('/about')}>Про нас</a></li>
+                        <li className="header__link"><a onClick={() => {navigate('/'); toggleHeader()}}>Головна</a></li>
+                        <li className="header__link"><a onClick={() => {navigate('/about'); toggleHeader()}}>Про нас</a></li>
                     </ul>
                 </nav>
-                <div className="header__burger" onClick={toggleHeader}>
+                <div className="header__burger" onClick={toggleHeader} ref={divBurger}>
                         <span></span>
                 </div>
             </div>
@@ -28,14 +32,14 @@ function Header (props) {
         <div className="header">
         <div className="container header__body">
             <div className='header__logo block-img'><img className='block-img__img' src={logo_icon}/></div>
-            <nav className="header__menu">
+            <nav className="header__menu" ref={divMenu}>
                 <ul className="header__list">
-                    <li className="header__link"><a onClick={()=> navigate('/')}>Головна</a></li>
-                    <li className="header__link"><a onClick={()=> navigate('/newbook')}>Нова Книга</a></li>
-                    <li className="header__link"><a onClick={()=> navigate('/about')}>Про нас</a></li>
+                    <li className="header__link"><a onClick={()=> {navigate('/'); toggleHeader()}}>Головна</a></li>
+                    <li className="header__link"><a onClick={()=> {navigate('/new-book'); toggleHeader()}}>Нова Книга</a></li>
+                    <li className="header__link"><a onClick={()=> {navigate('/about'); toggleHeader()}}>Про нас</a></li>
                 </ul>
             </nav>
-            <div className="header__burger" onClick={toggleHeader}>
+            <div className="header__burger" onClick={toggleHeader} ref={divBurger}>
                     <span></span>
             </div>
         </div>

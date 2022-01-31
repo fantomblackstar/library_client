@@ -1,43 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FreshBooks from "../components/FreshBooks";
+import AllBooks from "../components/AllBooks";
+import Preloader from "../components/Preloader";
 
-function Home(props) {
-
-    const [booksObj, setBooksObj] = useState('');
-
-    useEffect(() => {
-        if (booksObj === '') getBooks();
-        else {
-         
-        }
-
-    }, [booksObj]);
-
-
-    async function getBooks() {
-        console.log('send request');
-        await fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(json => setBooksObj(json));
-    }
-
-    return (booksObj === '') ? (
+function Home (props) {
+    return (props.booksObj === '') ? (
         <div className="page">
-            <div className="container">
-                <p className="page__title">Новинки</p>
-            </div>
-
+            <Preloader />
         </div>
     ) :
-    (
-        <div className="page">
-            <div className="container">
-                <p className="page__title">Новинки</p>
-                <FreshBooks books={booksObj}/>
+        (
+            <div className="page">
+                <div className="container">
+                    <p className="page__title">Новинки</p>
+                    <FreshBooks books={props.booksObj} />
+                    <p className="page__title">Всі книги</p>
+                    <AllBooks books={props.booksObj} />
+                </div>
             </div>
-
-        </div>
-    )
+        )
 }
 
 export default Home;
