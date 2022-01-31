@@ -39,14 +39,12 @@ function FreshBooks(props) {
 
     function handleOnWeel(event) {
         event = event || window.event;
-        if(canSlide.current){
+        if (canSlide.current) {
             deltaX.current += event.deltaY || event.detail || event.wheelDelta;
-            if (Math.abs(deltaX.current) > 100) {
-                canSlide.current = false;
-                deltaX.current > 0 ? handleStepSlider(-1) : handleStepSlider(1);
-                setTimeout(() => canSlide.current = true, 1000);
-                deltaX.current = 0;
-            };
+            canSlide.current = false;
+            deltaX.current > 0 ? handleStepSlider(-1) : handleStepSlider(1);
+            setTimeout(() => canSlide.current = true, 500);
+            deltaX.current = 0;
         }
         event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     }
