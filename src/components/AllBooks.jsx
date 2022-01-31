@@ -17,7 +17,12 @@ function AllBooks(props) {
             rowKey += elem.key;
 
             if ((index + 1) % 3 === 0) {
-                rows.push(<BooksRow books={rowBooks} key={rowKey} />)
+                rows.push(<BooksRow books={rowBooks} key={rowKey} notFull={false} />)
+                rowBooks = [];
+                rowKey = '';
+            }
+            else if (showBookCount > props.books.length - 3 && index === props.books.length - 1) {
+                rows.push(<BooksRow books={rowBooks} key={rowKey} notFull={true} />)
                 rowBooks = [];
                 rowKey = '';
             }
@@ -31,10 +36,13 @@ function AllBooks(props) {
         nodes[1].classList.remove('hide');
         setTimeout(() => {
             const nodes = divLoader.current.children;
-            nodes[0].style.opacity = '1';
+            console.log(showBookCount + 3, props.books.length);
+            if (showBookCount + 3 >= props.books.length) nodes[0].classList.add('hide');
+            else nodes[0].style.opacity = '1';
             nodes[1].classList.add('hide');
             setShowBookCount(prevState => prevState + 3);
-        }, 1000);
+
+        }, 500);
     }
 
     return (
@@ -51,13 +59,16 @@ function AllBooks(props) {
 export default AllBooks;
 
 function BooksRow(props) {
-    const row = <div className="all-books__row">
+    return props.notFull ? <div className="all-books__row not-full">
         {props.books.map(book => {
             return <Book key={book.key} bookInfo={book} />
         })}
+    </div> :
+        <div className="all-books__row">
+            {props.books.map(book => {
+                return <Book key={book.key} bookInfo={book} />
+            })}
     </div>
-
-    return row;
 }
 
 function Book(props) {
