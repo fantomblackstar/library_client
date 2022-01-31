@@ -98,10 +98,12 @@
 
     .fresh-books__body {
         width: calc((100%) / 2 * 10);
+        transition: .5s ease;
     }
 
     .fresh-book:hover,
     .fresh-book:focus {
          transform: scale(100%,100%);
+         box-shadow: none;
     }
 }

@@ -9,6 +9,7 @@ function FreshBooks(props) {
     const divSliderBody = useRef(null);
     let sliderItemWidth = useRef(null);
     let sliderItemCount = useRef(null);
+    let canSlide = useRef(true);
     let deltaX = useRef(0);
     let positionLeft = useRef(0);
     let touchEvent = useRef(null);
@@ -23,7 +24,7 @@ function FreshBooks(props) {
         setSliderItemCount(sliderWidth);
         handleStepDots();
 
-        if (sliderItemCount.current == 2) sliderItemWidth.current = (sliderWidth - 10) / sliderItemCount.current;
+        if (sliderItemCount.current === 2) sliderItemWidth.current = (sliderWidth - 10) / sliderItemCount.current;
         else {
             sliderItemWidth.current = (sliderWidth - 20) / sliderItemCount.current;
         }
@@ -38,15 +39,19 @@ function FreshBooks(props) {
 
     function handleOnWeel(event) {
         event = event || window.event;
-        deltaX.current += event.deltaY || event.detail || event.wheelDelta;
-        if (Math.abs(deltaX.current) > 400) {
-            deltaX.current > 0 ? handleStepSlider(-1) : handleStepSlider(1);
-            deltaX.current = 0;
-        };
+        if(canSlide.current){
+            deltaX.current += event.deltaY || event.detail || event.wheelDelta;
+            if (Math.abs(deltaX.current) > 100) {
+                canSlide.current = false;
+                deltaX.current > 0 ? handleStepSlider(-1) : handleStepSlider(1);
+                setTimeout(() => canSlide.current = true, 1000);
+                deltaX.current = 0;
+            };
+        }
         event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     }
 
-    function handelOnTouchEnd (event) {
+    function handelOnTouchEnd(event) {
         deltaX.current = touchEvent.current.touches[0].pageX - event.changedTouches[0].pageX;
         if (Math.abs(deltaX.current) > 100) {
             deltaX.current > 0 ? handleStepSlider(-1) : handleStepSlider(1);
