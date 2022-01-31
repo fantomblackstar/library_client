@@ -1,5 +1,5 @@
 export async function postData(data, path = '') {
-    const response = await fetch(`http://localhost:3080/${path}`, {
+    const response = await fetch(`http://192.168.0.107:3080/${path}`, {
         method: 'POST',
         // mode: 'no-cors',
         // cache: 'no-cache',

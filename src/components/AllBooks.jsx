@@ -28,11 +28,11 @@ function AllBooks(props) {
     function loadMoreImage() {
         const nodes = divLoader.current.children;
         nodes[0].style.opacity = '0';
-        nodes[1].classList.add('active');
+        nodes[1].classList.remove('hide');
         setTimeout(() => {
             const nodes = divLoader.current.children;
             nodes[0].style.opacity = '1';
-            nodes[1].classList.remove('active');
+            nodes[1].classList.add('hide');
             setShowBookCount(prevState => prevState + 3);
         }, 1000);
     }
@@ -42,7 +42,7 @@ function AllBooks(props) {
             {createBookRows()}
             <div className="load-more" ref={divLoader}>
                 <p className="load-more__text" onClick={loadMoreImage}>Завантажити ще книги</p>
-                <div className="loader_small"></div>
+                <div className="loader_small hide"></div>
             </div>
         </div>
     )

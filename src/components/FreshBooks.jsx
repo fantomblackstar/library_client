@@ -9,27 +9,27 @@ function FreshBooks(props) {
     const divSliderBody = useRef(null);
     let sliderItemWidth = useRef(null);
     let sliderItemCount = useRef(null);
+    let deltaX = useRef(0);
     let positionLeft = useRef(0);
     let touchEvent = useRef(null);
     const booksCount = 10;
-  
+
     useEffect(() => {
         divSlider.current.addEventListener('wheel', handleOnWeel);
-        divSlider.current.addEventListener('touchstart',(e) => touchEvent.current = e);
-        divSlider.current.addEventListener('touchmove', handelOnTouchMove);
-        divSlider.current.addEventListener('touchend', (e) => touchEvent.current = null);
-        
-        const sliderWidth = divSlider.current.offsetWidth ;
+        divSlider.current.addEventListener('touchstart', (e) => touchEvent.current = e);
+        divSlider.current.addEventListener('touchend', handelOnTouchEnd);
+
+        const sliderWidth = divSlider.current.offsetWidth;
         setSliderItemCount(sliderWidth);
         handleStepDots();
-        
-        if( sliderItemCount.current == 2)  sliderItemWidth.current = (sliderWidth - 10) / sliderItemCount.current;
+
+        if (sliderItemCount.current == 2) sliderItemWidth.current = (sliderWidth - 10) / sliderItemCount.current;
         else {
             sliderItemWidth.current = (sliderWidth - 20) / sliderItemCount.current;
         }
     })
 
- 
+
     const books = props.books.map((book, index) => {
         if (index < booksCount) {
             return <FreshBook key={book.key} bookInfo={book} />
@@ -38,18 +38,21 @@ function FreshBooks(props) {
 
     function handleOnWeel(event) {
         event = event || window.event;
-        let delta = event.deltaY || event.detail || event.wheelDelta;
-        delta > 0 ? handleStepSlider(-1) : handleStepSlider(1);
+        deltaX.current += event.deltaY || event.detail || event.wheelDelta;
+        if (Math.abs(deltaX.current) > 400) {
+            deltaX.current > 0 ? handleStepSlider(-1) : handleStepSlider(1);
+            deltaX.current = 0;
+        };
         event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     }
 
-    function handelOnTouchMove(event){
-        if(touchEvent.current){
-            let delta = touchEvent.current.touches[0].pageX - event.touches[0].pageX ;
-            if(Math.abs(delta) > 150){
-                delta > 0?  handleStepSlider(-1) : handleStepSlider(1);
-            }
+    function handelOnTouchEnd (event) {
+        deltaX.current = touchEvent.current.touches[0].pageX - event.changedTouches[0].pageX;
+        if (Math.abs(deltaX.current) > 100) {
+            deltaX.current > 0 ? handleStepSlider(-1) : handleStepSlider(1);
+            deltaX.current = 0;
         }
+        touchEvent.current = null;
     }
 
     function handleStepSlider(n) {
@@ -73,12 +76,12 @@ function FreshBooks(props) {
         })
     }
 
-    function setSliderItemCount(sliderWidth){
-       
-        if (sliderWidth >= 1110)  sliderItemCount.current = 6
-        else if (sliderWidth === 840)  sliderItemCount.current = 5;
-        else if (sliderWidth === 640)  sliderItemCount.current = 4;
-        else   sliderItemCount.current = 2;
+    function setSliderItemCount(sliderWidth) {
+
+        if (sliderWidth >= 1110) sliderItemCount.current = 6
+        else if (sliderWidth === 840) sliderItemCount.current = 5;
+        else if (sliderWidth === 640) sliderItemCount.current = 4;
+        else sliderItemCount.current = 2;
     }
 
     function createDots() {

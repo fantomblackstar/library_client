@@ -63,10 +63,6 @@
     border-top-color: #9370DB;
     -webkit-animation: spin 1.5s linear infinite;
     animation: spin 1.5s linear infinite;
-    opacity: 0;
-}
-
-.loader_small.active {
     opacity: 1;
 }
 
