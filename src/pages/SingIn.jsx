@@ -22,25 +22,26 @@ function SignIn(props) {
         setloginInput(value);
     }
 
-    function onSubmit(event) {
+    async function onSubmit(event) {
         event.preventDefault();
         if (loginInput.length < 6 || passwordInput.length < 6) showErrorMessage('Логін і пароль повинні містити не менше 6 символів');
         else {
-            let result = sendRequest();
-            if (result) {
+            let result = await sendRequest();
+            if (result.isLogin) {
                 props.onLogIn(loginInput, passwordInput);
                 navigate("/");
             }
             else {
-                showErrorMessage('Не коректний ввід паролю або логіну');
+                showErrorMessage(result.message);
             }
         }
     }
 
     async function sendRequest() {
-        const data = JSON.stringify({ login: loginInput, password: passwordInput });
-        //let res = await postData('/sign-in')
-        return true;
+        const data = { login: loginInput, password: passwordInput };
+        return await postData(data, 'login')
+        .then(response => response.json())
+        .then(data => data);
     }
 
 

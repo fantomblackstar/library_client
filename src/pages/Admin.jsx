@@ -19,7 +19,7 @@ function Admin(props) {
     async function onSubmit(event) {
         event.preventDefault();
         if(oldPassword !== props.adminData.current.password) showErrorMessage("Старий пароль не вірний!")
-        else if(newLogin != '' && newLogin.length < 6) showErrorMessage('Логін повинен бути не менше 6 символів')
+        else if(newLogin !== '' && newLogin.length < 6) showErrorMessage('Логін повинен бути не менше 6 символів')
         else if (newRePassword !== newPassword) showErrorMessage('Паролі не співпадають');
         else if (newPassword.length < 6) showErrorMessage('Пароль повинен бути не менше 6 символів')
         else {
@@ -44,7 +44,7 @@ function Admin(props) {
     }
 
     async function sendRequest() {
-        const data = JSON.stringify({ login: newLogin || props.adminData.current.login, password: newPassword || props.adminData.current.password});
+        // const data = JSON.stringify({ login: newLogin || props.adminData.current.login, password: newPassword || props.adminData.current.password});
         //let res = await postData('/new-password')
         return true;
     }
