@@ -33,7 +33,7 @@
 .sign-in input[type=password] {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 0px 0px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -51,6 +51,14 @@
     width: 100%;
     font-size: 18px;
 }
+
+.sign-in__input_checkbox {
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+    transform: translate(0px,4px);
+    cursor: pointer;
+}
   
 button:hover {
     opacity: 0.9;
@@ -66,11 +74,6 @@ img.avatar {
     width: 40%;
 }
 
-
-.hide  {
-    display: none;
-}
-
 #show-pass {
     width: 20px;
     height: 20px;
@@ -80,6 +83,7 @@ img.avatar {
 
 .sign-in__group {
      position: relative;
+     margin-bottom: 10px;
 }
 
 .sign-in__label {
@@ -104,10 +108,6 @@ img.avatar {
     bottom: -10px;
     text-align: center;
     left: 0px;
-}
-
-.hide {
-    display: none;
 }
 
 @media (max-width: 992px){

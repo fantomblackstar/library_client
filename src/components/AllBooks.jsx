@@ -36,7 +36,6 @@ function AllBooks(props) {
         nodes[1].classList.remove('hide');
         setTimeout(() => {
             const nodes = divLoader.current.children;
-            console.log(showBookCount + 3, props.books.length);
             if (showBookCount + 3 >= props.books.length) nodes[0].classList.add('hide');
             else nodes[0].style.opacity = '1';
             nodes[1].classList.add('hide');

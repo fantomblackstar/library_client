@@ -28,7 +28,7 @@ function SignIn(props) {
         else {
             let result = await sendRequest();
             if (result.isLogin) {
-                props.onLogIn(loginInput, passwordInput);
+                props.onLogIn(loginInput);
                 navigate("/");
             }
             else {
@@ -40,8 +40,8 @@ function SignIn(props) {
     async function sendRequest() {
         const data = { login: loginInput, password: passwordInput };
         return await postData(data, 'login')
-        .then(response => response.json())
-        .then(data => data);
+            .then(response => response.json())
+            .then(data => data);
     }
 
 
@@ -64,8 +64,10 @@ function SignIn(props) {
                 <div className="imgcontainer">
                     <img src={avatar_icon} alt="avatar" className="avatar" />
                 </div>
-                <label className="sign-in__label"><b>Логін</b></label>
-                <input type="text" className='input-email' name="login" onChange={onChangeLoginInput} value={loginInput} />
+                <div className="sign-in__group">
+                    <label className="sign-in__label"><b>Логін</b></label>
+                    <input type="text" className='input-email' name="login" onChange={onChangeLoginInput} value={loginInput} />
+                </div>
                 <label className="sign-in__label"><b>Пароль</b></label>
                 <div className="sign-in__group">
                     <input type="password" className='input-password' name="psw" ref={divPass} onChange={onChangePasswordInput} value={passwordInput} />

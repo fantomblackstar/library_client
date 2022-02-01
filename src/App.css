@@ -100,6 +100,11 @@ a {
   height: 100%;
 }
 
+
+.hide  {
+  display: none !important;
+}
+
 @media (max-width:1200px){
   .container {
     width: 900px;

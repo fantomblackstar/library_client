@@ -11,7 +11,7 @@ import { postData } from "./postData";
 function App() {
   const [logIn, setLogIn] = useState(false);
   const [booksObj, setBooksObj] = useState('');
-  const adminData = useRef({login:'', password : ''});
+  const adminData = useRef({login:''});
 
   useEffect(() => {
     if (booksObj === '') getBooks();
@@ -29,8 +29,8 @@ function App() {
     document.querySelector('.modal-wrap-center').classList.remove('hide');
   }
 
-  function onLogIn(login, password) {
-    adminData.current = {'login' : login, 'password' : password};
+  function onLogIn(login) {
+    adminData.current = {'login' : login};
     setLogIn(true);
   }
 
