@@ -4,12 +4,13 @@ import BookIcon from "../components/BookIcon";
 import EditBookInfo from "../components/EditBookInfo";
 import EditBookAbout from "../components/EditBookAbout";
 import { postData } from "../postData";
+import BookInfo from "../components/BookInfo";
 
 function BookAdmin(props) {
     const bookKey = useLocation().pathname.split('/')[2];
     const bookObj = props.booksObj.filter((elem) => elem.key === bookKey)[0];
     const navigate = useNavigate();
-
+    console.log(bookObj);
     const [bookInfo, setBookInfo] = useState({
         'name': bookObj.name,
         'avtor': bookObj.avtor,
@@ -22,6 +23,7 @@ function BookAdmin(props) {
         'section': bookObj.section,
         'about': bookObj.about,
         'img': bookObj.img,
+        'key': bookObj.key,
         'ignoreimg': false
     });
 
@@ -32,7 +34,11 @@ function BookAdmin(props) {
     async function onSubmitForm(event) {
         event.preventDefault();
         let validateForm = true;
+        if(!bookInfo.ignoreimg) {
+            delete bookInfo.img;
+        }
         for (let key in bookInfo) {
+            console.log(bookInfo[key]);
             if (bookInfo[`${key}`] === '') {
                 props.showModalWindow('Заповніть усі поля');
                 validateForm = false;
