@@ -1,14 +1,15 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import download_icon from '../image/download-icon-white.png';
+import book_icon from '../image/book-icon.png';
 
 function EditBookIcon(props) {
     const imgRef = useRef(null);
 
-    function onLoadImage (event) {
+    function onLoadImage(event) {
         const reader = new FileReader();
         reader.addEventListener("load", () => {
             const srcImg = reader.result + "";
-            imgRef.current.style.backgroundImage = `url(${srcImg})`;
+            imgRef.current.src = srcImg;
             props.onChangeInfo('img', srcImg);
         });
         reader.readAsDataURL(event.target.files[0]);
@@ -17,7 +18,9 @@ function EditBookIcon(props) {
     return (
         <div className="book-icon">
             <p className="book-icon__title">Фото: </p>
-            <div className="book-icon__img-block" ref={imgRef}></div>
+            <div className="book-icon__img-block">
+                <img className="book-icon__img" src={props.bookInfo.img || book_icon} ref={imgRef} />
+            </div>
             <div className="book-icon__input-wrapper">
                 <input type="file" className="book-icon__input_file" id='input-img__file' accept="image/jpeg" onChange={onLoadImage} />
                 <label htmlFor="input-img__file" className="book-icon__file-button">
@@ -25,8 +28,6 @@ function EditBookIcon(props) {
                     <span className="book-icon__file-button-text">Виберіть файл</span>
                 </label>
             </div>
-            <input type='checkbox' className="book-icon__input_ckeckbox" id="ignor-img" onClick={() => (props.onChangeInfo('ignoreimg', !props.bookInfo.ignoreimg))}/>
-            <label htmlFor="ignor-img"><span></span>Добавити книгу без фото</label>
         </div>
     )
 }

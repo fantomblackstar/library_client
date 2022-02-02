@@ -29,10 +29,6 @@ function EditBookInfo (props) {
                 <input className="book-info__input" value={props.bookInfo.size} onChange={(event) => props.onChangeInfo('size', event.target.value.replace(/[^a-z\u0400-\u04FF0-9 ]/gi,''))}/>
             </div>
             <div className="book-info__group">
-                <p className="book-info__name">Видавництво:</p>
-                <input className="book-info__input" value={props.bookInfo.publish} onChange={(event) => props.onChangeInfo('publish', event.target.value.replace(/[^a-z\u0400-\u04FF\. ]/gi,''))}/>
-            </div>
-            <div className="book-info__group">
                 <p className="book-info__name">Перекладач(і):</p>
                 <input className="book-info__input" value={props.bookInfo.translate} onChange={(event) => props.onChangeInfo('translate', event.target.value.replace(/[^a-z\u0400-\u04FF\.\, ]/gi,''))}/>
             </div>

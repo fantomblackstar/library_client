@@ -34,6 +34,28 @@ function App() {
     setLogIn(true);
   }
 
+  async function deleteBook(key){
+    let res = await postData({key}, 'delete-book');
+    if(res.delete){
+      let books = booksObj.filter((elem) => elem.key !== `${key}`);
+      setBooksObj(books);
+      showModalWindow('Книгу успішно видалено');
+    }
+    else 
+    showModalWindow(res.message);
+  }
+
+  async function editBook(bookInfo){
+      let books = booksObj.map((elem) => {
+        if(elem.key === bookInfo.key){
+          return bookInfo;
+        }
+        return elem;
+      });
+      setBooksObj(books);
+      showModalWindow('Книгу успішно редаговано');
+  }
+
   return (
     <div className="App">
       <HashRouter >
@@ -44,6 +66,8 @@ function App() {
           showModalWindow={showModalWindow}
           booksObj={booksObj}
           adminData={adminData}
+          deleteBook={deleteBook}
+          editBook={editBook}
         />
       </HashRouter>
       <Footer />

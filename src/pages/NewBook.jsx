@@ -14,12 +14,10 @@ export default function NewBook (props) {
         'cover': props.cover || 'Тверда',
         'page': props.page || '',
         'size': props.size || '',
-        'publish': props.publish || '',
         'translate': props.translate || '',
         'section': props.section || '',
         'about': props.about || '',
         'img': props.img || '',
-        'ignoreimg': false
     });
 
     const navigate = useNavigate();
@@ -28,8 +26,7 @@ export default function NewBook (props) {
         event.preventDefault();
         let validateForm = true;
         for (let key in info) {
-            if(key === 'img' && info.ignoreimg) {
-                info.img = '';
+            if(key === 'img' && info[`${key}`] === '') {
                 continue;
             }
             if (info[`${key}`] === '') {

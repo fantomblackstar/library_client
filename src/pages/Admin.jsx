@@ -101,12 +101,12 @@ function Admin(props) {
                 </div>
                 <label className="sign-in__label"><b>Новий пароль:</b></label>
                 <div className="sign-in__group">
-                    <input type="password" className='input-password' name="psw" ref={divNewPass} onChange={(event) => onChangeInputs('newPass', event.target.value.replace(/\W/g, ''))} value={inputs.newPass} />
+                    <input type="password" className='input-password' name="newpsw" ref={divNewPass} onChange={(event) => onChangeInputs('newPass', event.target.value.replace(/\W/g, ''))} value={inputs.newPass} />
                     <img src={eye_icon} alt='show_pass' className="show-pass-img" onClick={() => showInputValue(divNewPass)} />
                 </div>
                 <label className="sign-in__label"><b>Повторіть новий пароль:</b></label>
                 <div className="sign-in__group">
-                    <input type="password" className='input-password' name="psw" ref={divNewRePass} onChange={(event) => onChangeInputs('newRePass', event.target.value.replace(/\W/g, ''))} value={inputs.newRePass} />
+                    <input type="password" className='input-password' name="newrepsw" ref={divNewRePass} onChange={(event) => onChangeInputs('newRePass', event.target.value.replace(/\W/g, ''))} value={inputs.newRePass} />
                     <img src={eye_icon} alt='show_pass' className="show-pass-img" onClick={() => showInputValue(divNewRePass)} />
                 </div>
                 <div className="sign-in__group">

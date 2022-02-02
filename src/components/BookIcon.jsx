@@ -1,9 +1,11 @@
 import book_icon from '../image/book-icon.png';
 
-function BookIcon (props) {
+function BookIcon(props) {
     return (
         <div className="book-icon">
-            <img className="book-icon__img" src={props.bookInfo.img || book_icon} />
+            <div className='book-icon__img-block'>
+                <img className="book-icon__img" src={props.bookInfo.img || book_icon} />
+            </div>
         </div>
     )
 }

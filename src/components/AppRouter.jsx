@@ -18,7 +18,7 @@ function AppRouter(props) {
                 <Route path="/admin" element={<Admin adminData={props.adminData} onLogIn={props.onLogIn} />} />
                 <Route path="/about" element={<AboutUs/>} />
                 <Route path="/new-book" element={<NewBook showModalWindow={props.showModalWindow}/>} />
-                <Route path="/book/:book_id" element={<BookAdmin booksObj={props.booksObj} showModalWindow={props.showModalWindow}/>} />
+                <Route path="/book/:book_id" element={<BookAdmin booksObj={props.booksObj} showModalWindow={props.showModalWindow} deleteBook={props.deleteBook} editBook={props.editBook}/>} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
             :

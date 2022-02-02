@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import BookIcon from "../components/BookIcon";
 import EditBookInfo from "../components/EditBookInfo";
 import EditBookAbout from "../components/EditBookAbout";
+import EditBookIcon from "../components/EditBookIcon";
 import { postData } from "../postData";
-import BookInfo from "../components/BookInfo";
+import Preloader from "../components/Preloader";
+import '../styles/Book.css';
 
 function BookAdmin(props) {
     const bookKey = useLocation().pathname.split('/')[2];
     const bookObj = props.booksObj.filter((elem) => elem.key === bookKey)[0];
     const navigate = useNavigate();
-    console.log(bookObj);
+    const [canDeleteBook, setCanDeleteBook] = useState(false);
     const [bookInfo, setBookInfo] = useState({
         'name': bookObj.name,
         'avtor': bookObj.avtor,
@@ -24,21 +25,29 @@ function BookAdmin(props) {
         'about': bookObj.about,
         'img': bookObj.img,
         'key': bookObj.key,
-        'ignoreimg': false
     });
 
     function onChangeInfo(key, value) {
         setBookInfo(prevValue => ({ ...prevValue, [`${key}`]: value }));
     }
 
+    function deleteBook () {
+        if(!canDeleteBook){
+            props.showModalWindow('Після видалення книги всі дані про неї буде стерто, якщо ви справді бажаєте видалити книгу, нажміть кнопку "ОК" після чого ще раз нажміть на кнопку "Видалити книгу"');
+            setCanDeleteBook(true);
+        } else {
+            props.deleteBook(bookInfo.key);
+            navigate('/');
+        }
+    }
+
     async function onSubmitForm(event) {
         event.preventDefault();
         let validateForm = true;
-        if(!bookInfo.ignoreimg) {
+        if (!bookInfo.img) {
             delete bookInfo.img;
         }
         for (let key in bookInfo) {
-            console.log(bookInfo[key]);
             if (bookInfo[`${key}`] === '') {
                 props.showModalWindow('Заповніть усі поля');
                 validateForm = false;
@@ -48,11 +57,11 @@ function BookAdmin(props) {
 
         if (validateForm) {
             let res = await postData(bookInfo, 'edit-book')
-            .then(response => response.json())
-            .then(data => data);
+                .then(response => response.json())
+                .then(data => data);
 
             if (res) {
-                props.showModalWindow('Книгу успішно редаговано');
+                props.editBook(bookInfo);
                 navigate('/');
             }
             else {
@@ -61,18 +70,27 @@ function BookAdmin(props) {
         }
     }
 
-    return <div className="page">
-        <div className="container">
-            <form className="book-edit" onSubmit={onSubmitForm}>
-                <div className="row">
-                    <BookIcon bookInfo={bookInfo} />
-                    <EditBookInfo onChangeInfo={onChangeInfo} bookInfo={bookInfo} />
-                </div>
-                    <EditBookAbout onChangeInfo={onChangeInfo} bookInfo={bookInfo}/>
-                <button className="button-submit">Зберегти зміни</button>
-            </form>
-        </div>
-    </div>
+    return props.booksObj ? (
+        <div className="page">
+            <div className="container">
+                <form className="book-edit" onSubmit={onSubmitForm}>
+                    <div className="row">
+                        <EditBookIcon bookInfo={bookInfo} onChangeInfo={onChangeInfo} />
+                        <EditBookInfo onChangeInfo={onChangeInfo} bookInfo={bookInfo} />
+                    </div>
+                    <EditBookAbout onChangeInfo={onChangeInfo} bookInfo={bookInfo} />
+                    <div className="row">
+                        <button type="submit" className="button-submit">Зберегти зміни</button>
+                        <button type="button" className="button-delete" onClick={deleteBook}>Видалити книгу</button>
+                    </div>
+                </form>
+            </div>
+        </div>) :
+        (
+            <div className="page">
+                <Preloader />
+            </div>
+        )
 }
 
 export default BookAdmin;
