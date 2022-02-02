@@ -34,15 +34,18 @@ function App() {
     setLogIn(true);
   }
 
-  async function deleteBook(key){
-    let res = await postData({key}, 'delete-book');
-    if(res.delete){
+  async function deleteBook(key, img = ''){
+    let res = await postData({key, img}, 'remove-book');
+   console.log(res);
+    if(res){
       let books = booksObj.filter((elem) => elem.key !== `${key}`);
       setBooksObj(books);
       showModalWindow('Книгу успішно видалено');
     }
-    else 
-    showModalWindow(res.message);
+    else {
+      showModalWindow('Проблема з сервером, спробуйте пізніше');
+    }
+
   }
 
   async function editBook(bookInfo){

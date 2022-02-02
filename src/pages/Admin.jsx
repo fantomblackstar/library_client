@@ -30,13 +30,6 @@ function Admin(props) {
             showErrorMessage('Старий пароль повинен бути не менше 6 символів');
             return;
         }
-
-        const data = { 'login': login, 'password': oldPass };
-        const validPass = await postData(data, 'login')
-            .then(response => response.json())
-            .then(data => data);
-
-        if (!validPass.isLogin) showErrorMessage("Старий пароль не вірний!");
         else if (newRePass !== newPass) showErrorMessage('Паролі не співпадають');
         else if (newPass.length < 6) showErrorMessage('Новий пароль повинен бути не менше 6 символів')
         else {
@@ -46,9 +39,12 @@ function Admin(props) {
             }
 
             let result = await sendEditRequest();
-            if (result) {
+            if (result.isСorrect) {
                 changeLogin ? props.onLogIn(login) : props.onLogIn(newLogin);
                 navigate("/");
+            }
+            else if(result.message) {
+                showErrorMessage(result.message);
             }
             else {
                 showErrorMessage('Помилка з сервером, спробуйте пізніше');
@@ -66,10 +62,12 @@ function Admin(props) {
 
     async function sendEditRequest() {
         const login = props.adminData.current.login;
-        const data = { login, 'password': inputs.newPass };
+        const data = { login, password: inputs.oldPass, newPassword: inputs.newPass };
         if (inputs.changeLogin) data['newLogin'] = inputs.newLogin;
-        // let res = await postData(data,'edit-admin');
-        return true;
+
+        return await postData(data, 'edit-data')
+        .then(response => response.json())
+        .then(data => data);
     }
 
     function showInputValue(input) {

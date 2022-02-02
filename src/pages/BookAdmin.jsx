@@ -36,7 +36,7 @@ function BookAdmin(props) {
             props.showModalWindow('Після видалення книги всі дані про неї буде стерто, якщо ви справді бажаєте видалити книгу, нажміть кнопку "ОК" після чого ще раз нажміть на кнопку "Видалити книгу"');
             setCanDeleteBook(true);
         } else {
-            props.deleteBook(bookInfo.key);
+            props.deleteBook(bookInfo.key, bookInfo.img);
             navigate('/');
         }
     }
