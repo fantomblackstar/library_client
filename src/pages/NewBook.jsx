@@ -27,8 +27,8 @@ export default function NewBook(props) {
         event.preventDefault();
         let validateForm = true;
         for (let key in info) {
-            if (key === 'img' && info[`${key}`] === '') {
-                continue;
+            if(key === 'img' && info[`${key}`] === '') {
+                delete info[key];
             }
             if (info[`${key}`] === '') {
                 console.log(key);
