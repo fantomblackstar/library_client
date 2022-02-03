@@ -6,7 +6,7 @@ import EditBookInfo from "../components/EditBookInfo";
 import EditBookAbout from "../components/EditBookAbout";
 import { postData } from "../postData";
 
-export default function NewBook (props) {
+export default function NewBook(props) {
     const [info, setInfo] = useState({
         'name': props.name || '',
         'avtor': props.avtor || '',
@@ -18,15 +18,16 @@ export default function NewBook (props) {
         'section': props.section || '',
         'about': props.about || '',
         'img': props.img || '',
+        'key': '0'
     });
 
     const navigate = useNavigate();
 
-    async function onSubmitForm (event) {
+    async function onSubmitForm(event) {
         event.preventDefault();
         let validateForm = true;
         for (let key in info) {
-            if(key === 'img' && info[`${key}`] === '') {
+            if (key === 'img' && info[`${key}`] === '') {
                 continue;
             }
             if (info[`${key}`] === '') {
@@ -37,13 +38,16 @@ export default function NewBook (props) {
             }
         }
 
+
         if (validateForm) {
             let res = await postData(info, 'new-book')
-            .then(response => response.json())
-            .then(data => data);
+                .then(response => response.json())
+                .then(data => data);
 
-            if (res) {
-                props.showModalWindow('Книгу успішно додано');
+            if (res.isAdded) {
+                let bookInfo = Object.assign({}, info);
+                bookInfo.key = res.key.toString();
+                props.addNewBook(bookInfo);
                 navigate('/');
             }
             else {
@@ -52,7 +56,7 @@ export default function NewBook (props) {
         }
     }
 
-    function onChangeInfo (key, value) {
+    function onChangeInfo(key, value) {
         setInfo(prevValue => ({ ...prevValue, [`${key}`]: value }));
     }
 

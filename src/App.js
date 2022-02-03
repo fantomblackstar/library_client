@@ -56,6 +56,11 @@ function App() {
       showModalWindow('Книгу успішно редаговано');
   }
 
+  async function addNewBook (bookInfo){
+    showModalWindow('Книгу успішно додано');
+    setBooksObj(prevState => ([...prevState, bookInfo]));
+  }
+
   return (
     <div className="App">
       <HashRouter >
@@ -68,6 +73,7 @@ function App() {
           adminData={adminData}
           deleteBook={deleteBook}
           editBook={editBook}
+          addNewBook={addNewBook}
         />
       </HashRouter>
       <Footer />
