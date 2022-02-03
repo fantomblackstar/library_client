@@ -10,6 +10,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
+    color: grey;
 }
 
 .footer__body::after {
@@ -23,6 +24,6 @@
     left: 0;
 }
 
-.footer__text {
-    opacity: .8;
+.footer__link {
+    cursor: pointer;
 }

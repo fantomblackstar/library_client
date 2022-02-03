@@ -2,7 +2,7 @@
     width: 100%;
     height: auto;
     box-sizing: border-box;
-    padding: 30px 0px 0px 20px ;
+    padding: 15px 0px 0px 20px ;
     justify-content: center;
     position: relative;
     border-radius: 2px;
@@ -46,7 +46,7 @@
     font-size: 60px;
 }
 .fresh-book__image {
-    width: 90%;
+    width: 85%;
     height: 150px ;
 }
 

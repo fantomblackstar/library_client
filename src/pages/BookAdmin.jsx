@@ -31,8 +31,8 @@ function BookAdmin(props) {
         setBookInfo(prevValue => ({ ...prevValue, [`${key}`]: value }));
     }
 
-    function deleteBook () {
-        if(!canDeleteBook){
+    function deleteBook() {
+        if (!canDeleteBook) {
             props.showModalWindow('Після видалення книги всі дані про неї буде стерто, якщо ви справді бажаєте видалити книгу, нажміть кнопку "ОК" після чого ще раз нажміть на кнопку "Видалити книгу"');
             setCanDeleteBook(true);
         } else {
@@ -79,9 +79,9 @@ function BookAdmin(props) {
                         <EditBookInfo onChangeInfo={onChangeInfo} bookInfo={bookInfo} />
                     </div>
                     <EditBookAbout onChangeInfo={onChangeInfo} bookInfo={bookInfo} />
-                    <div className="row">
-                        <button type="submit" className="button-submit">Зберегти зміни</button>
+                    <div className="row_center">
                         <button type="button" className="button-delete" onClick={deleteBook}>Видалити книгу</button>
+                        <button type="submit" className="button-submit">Зберегти зміни</button>
                     </div>
                 </form>
             </div>

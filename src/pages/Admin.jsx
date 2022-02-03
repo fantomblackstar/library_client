@@ -77,7 +77,6 @@ function Admin(props) {
 
     function toggleLogin() {
         onChangeInputs('changeLogin', !inputs.changeLogin);
-
         if (divLogin.current.classList.contains('hide')) divLogin.current.classList.remove('hide');
         else divLogin.current.classList.add('hide');
     }

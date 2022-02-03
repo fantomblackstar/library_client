@@ -181,6 +181,7 @@
 
 
 .button-delete {
+    margin-right: 30px;
     margin-top: 20px;
     padding: 12px 20px;
     border:none;
@@ -234,7 +235,6 @@
     }
 
     .book-icon__img-block {
-        margin-top: 50px;
         height: 250px;
     }
 }

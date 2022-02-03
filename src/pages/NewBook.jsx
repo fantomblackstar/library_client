@@ -13,14 +13,12 @@ export default function NewBook(props) {
         'language': props.language || 'Українська',
         'cover': props.cover || 'Тверда',
         'page': props.page || '',
-        'size': props.size || '',
-        'translate': props.translate || '',
+        'size': props.size || '135х205 мм',
         'section': props.section || '',
         'about': props.about || '',
         'img': props.img || '',
         'key': '0'
     });
-
     const navigate = useNavigate();
 
     async function onSubmitForm(event) {
@@ -37,7 +35,6 @@ export default function NewBook(props) {
                 break;
             }
         }
-
 
         if (validateForm) {
             let res = await postData(info, 'new-book')

@@ -26,7 +26,7 @@ function AllBooks(props) {
                 rowBooks = [];
                 rowKey = '';
             }
-        })
+        }) 
         return rows;
     }
 
@@ -36,10 +36,10 @@ function AllBooks(props) {
         nodes[1].classList.remove('hide');
         setTimeout(() => {
             const nodes = divLoader.current.children;
-            if (showBookCount + 3 >= props.books.length) nodes[0].classList.add('hide');
+            if (showBookCount + 6 >= props.books.length) nodes[0].classList.add('hide');
             else nodes[0].style.opacity = '1';
             nodes[1].classList.add('hide');
-            setShowBookCount(prevState => prevState + 3);
+            setShowBookCount(prevState => prevState + 6);
 
         }, 500);
     }
@@ -74,7 +74,7 @@ function Book(props) {
     const navigate = useNavigate();
     return (
         <div className="short-book" onClick={() => navigate(`/book/${props.bookInfo.key}`)}>
-            <img className="short-book__img" src={props.bookInfo.img || book_icon} />
+            <img className="short-book__img" src={props.bookInfo.img || book_icon} alt="bookicon"/>
             <p className="short-book__name">{props.bookInfo.name}</p>
             <p className="short-book__avtor">{props.bookInfo.avtor}</p>
         </div>

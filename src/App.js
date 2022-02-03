@@ -12,21 +12,25 @@ function App() {
   const [logIn, setLogIn] = useState(false);
   const [booksObj, setBooksObj] = useState('');
   const adminData = useRef({login:''});
+  const divModalWindow = useRef(null);
 
   useEffect(() => {
     if (booksObj === '') getBooks();
   }, [booksObj]);
 
   async function getBooks() {
-    console.log('getBooks');
     await postData({}, 'get-books')
       .then(response => response.json())
       .then(data => setBooksObj(Object.values(data)));
   }
 
   function showModalWindow(text) {
-    document.querySelector('.modal-window__text').innerHTML = text;
-    document.querySelector('.modal-wrap-center').classList.remove('hide');
+    divModalWindow.current.children[1].children[0].innerHTML = text;
+    divModalWindow.current.classList.remove('hide');
+  }
+
+  function closeModalWindow() {
+    divModalWindow.current.classList.add('hide');
   }
 
   function onLogIn(login) {
@@ -36,7 +40,7 @@ function App() {
 
   async function deleteBook(key, img = ''){
     let res = await postData({key, img}, 'remove-book');
-   console.log(res);
+ 
     if(res){
       let books = booksObj.filter((elem) => elem.key !== `${key}`);
       setBooksObj(books);
@@ -45,7 +49,6 @@ function App() {
     else {
       showModalWindow('Проблема з сервером, спробуйте пізніше');
     }
-
   }
 
   async function editBook(bookInfo){
@@ -61,7 +64,7 @@ function App() {
 
   async function addNewBook (bookInfo){
     showModalWindow('Книгу успішно додано');
-    setBooksObj(prevState => ([...prevState, bookInfo]));
+    setBooksObj(prevState => ([bookInfo, ...prevState]));
   }
 
   return (
@@ -78,9 +81,9 @@ function App() {
           editBook={editBook}
           addNewBook={addNewBook}
         />
+        <Footer />
       </HashRouter>
-      <Footer />
-      <ModalWindow />
+      <ModalWindow ref={divModalWindow} closeModalWindow={closeModalWindow}/>
     </div>
   );
 }

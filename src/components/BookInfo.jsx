@@ -27,10 +27,6 @@ function BookInfo (props) {
                 <p className="book-info__text">{props.bookInfo.size}</p>
             </div>
             <div className="book-info__group">
-                <p className="book-info__name">Перекладач(і):</p>
-                <p className="book-info__text">{props.bookInfo.translate}</p>
-            </div>
-            <div className="book-info__group">
                 <p className="book-info__name">Розділ:</p>
                 <p className="book-info__text">{props.bookInfo.section}</p>
             </div>

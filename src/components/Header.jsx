@@ -16,11 +16,11 @@ function Header (props) {
     return (!props.logIn)? (
         <div className="header">
             <div className="container header__body">
-                <div className='header__logo block-img'  onClick={() => navigate('/')}><img className='block-img__img' src={logo_icon}/></div>
+                <div className='header__logo block-img'  onClick={() => navigate('/')}><img className='block-img__img' src={logo_icon} alt="logo"/></div>
                 <nav className="header__menu" ref={divMenu}>
                     <ul className="header__list">
-                        <li className="header__link"><a onClick={() => {navigate('/'); toggleHeader()}}>Головна</a></li>
-                        <li className="header__link"><a onClick={() => {navigate('/about'); toggleHeader()}}>Про нас</a></li>
+                        <li className="header__link"><p onClick={() => {navigate('/'); toggleHeader()}}>Головна</p></li>
+                        <li className="header__link"><p onClick={() => {navigate('/about'); toggleHeader()}}>Про нас</p></li>
                     </ul>
                 </nav>
                 <div className="header__burger" onClick={toggleHeader} ref={divBurger}>
@@ -31,12 +31,12 @@ function Header (props) {
     ): (
         <div className="header">
         <div className="container header__body">
-            <div className='header__logo block-img' onClick={() => navigate('/')}><img className='block-img__img' src={logo_icon}/></div>
+            <div className='header__logo block-img' onClick={() => navigate('/')}><img className='block-img__img' src={logo_icon} alt=""/></div>
             <nav className="header__menu" ref={divMenu}>
                 <ul className="header__list">
-                    <li className="header__link"><a onClick={()=> {navigate('/'); toggleHeader()}}>Головна</a></li>
-                    <li className="header__link"><a onClick={()=> {navigate('/new-book'); toggleHeader()}}>Нова Книга</a></li>
-                    <li className="header__link"><a onClick={()=> {navigate('/about'); toggleHeader()}}>Про нас</a></li>
+                    <li className="header__link"><p onClick={()=> {navigate('/'); toggleHeader()}}>Головна</p></li>
+                    <li className="header__link"><p onClick={()=> {navigate('/new-book'); toggleHeader()}}>Нова Книга</p></li>
+                    <li className="header__link"><p onClick={()=> {navigate('/about'); toggleHeader()}}>Про нас</p></li>
                 </ul>
             </nav>
             <div className="header__burger" onClick={toggleHeader} ref={divBurger}>

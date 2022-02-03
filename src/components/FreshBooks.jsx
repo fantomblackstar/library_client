@@ -31,9 +31,10 @@ function FreshBooks(props) {
     })
 
 
-    const books = props.books.map((book, index) => {
+    const books = [];
+    props.books.forEach((book, index) => {
         if (index < booksCount) {
-            return <FreshBook key={book.key} bookInfo={book} />
+            books.push(<FreshBook key={book.key} bookInfo={book} />);
         }
     })
 
@@ -113,7 +114,7 @@ function FreshBook(props) {
     const navigate = useNavigate();
     return (
         <div className="fresh-book" onClick={() => navigate(`/book/${props.bookInfo.key}`)}>
-            <img className="fresh-book__image" src={props.bookInfo.img || book_icon} />
+            <img className="fresh-book__image" src={props.bookInfo.img || book_icon} alt="" />
             <p className="fresh-book__name">{props.bookInfo.name}</p>
         </div>
     )
