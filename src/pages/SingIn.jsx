@@ -60,7 +60,7 @@ function SignIn(props) {
 
     return (
         <div className="page authorisation">
-            <form className="sign-in" onSubmit={onSubmit}>
+            <div className="sign-in" >
                 <div className="imgcontainer">
                     <img src={avatar_icon} alt="avatar" className="avatar" />
                 </div>
@@ -73,9 +73,9 @@ function SignIn(props) {
                     <input type="password" className='input-password' name="psw" ref={divPass} onChange={onChangePasswordInput} value={passwordInput} />
                     <img src={eye_icon} alt='show_pass' className="show-pass-img" onClick={showPassword} />
                 </div>
-                <button type="submit">Ввійти</button>
+                <button type="submit" onClick={onSubmit}>Ввійти</button>
                 <p className='admin-error-message hide' ref={divError}></p>
-            </form>
+            </div>
         </div>
     )
 }
