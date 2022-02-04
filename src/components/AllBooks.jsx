@@ -8,9 +8,7 @@ function AllBooks(props) {
     const divLoader = useRef(null);
 
     function createBookRows() {
-        console.log(props.books);
         const allBooks = props.books.slice(10, showBookCount + 10);
-        console.log(allBooks);
         let rowBooks = [];
         let rowKey = '';
         let rows = [];
@@ -38,7 +36,7 @@ function AllBooks(props) {
         nodes[1].classList.remove('hide');
         setTimeout(() => {
             const nodes = divLoader.current.children;
-            if (showBookCount + 6 >= props.books.length) nodes[0].classList.add('hide');
+            if (showBookCount + 16 >= props.books.length) nodes[0].classList.add('hide');
             else nodes[0].style.opacity = '1';
             nodes[1].classList.add('hide');
             setShowBookCount(prevState => prevState + 6);
