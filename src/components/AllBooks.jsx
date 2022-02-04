@@ -8,7 +8,9 @@ function AllBooks(props) {
     const divLoader = useRef(null);
 
     function createBookRows() {
-        const allBooks = props.books.slice(0, showBookCount);
+        console.log(props.books);
+        const allBooks = props.books.slice(10, showBookCount + 10);
+        console.log(allBooks);
         let rowBooks = [];
         let rowKey = '';
         let rows = [];
