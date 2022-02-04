@@ -1,5 +1,5 @@
 export async function postData(data, path = '') {
-    const response = await fetch(`http://192.168.0.107:3080/${path}`, {
+    const response = await fetch(`https://kavsko-library-server.herokuapp.com/${path}`, {
         method: 'POST',
         // mode: 'cors',
         // cache: 'no-cache',
